@@ -29,3 +29,15 @@
 .header img {
     height: 70px;
 }
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 20%) 1fr minmax(0, 20%);
+}
+
+.content {
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px
+}
