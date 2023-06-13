@@ -17,7 +17,6 @@ Book.prototype.getElement = function () {
     author.classList.add('author');
     author.textContent = this.author;
     book.appendChild(author);
-    // need to add checkmark and button
     const interaction = document.createElement('div');
     interaction.classList.add('interaction');
     const readForm = document.createElement('div');
@@ -49,6 +48,9 @@ Book.prototype.getElement = function () {
     button.type = 'button'
     button.textContent = 'Remove';
     //add button event listener
+    button.addEventListener('click', () => {
+        library.removeChild(book);
+    })
     interaction.appendChild(button);
     book.appendChild(interaction);
     return book;
@@ -56,14 +58,3 @@ Book.prototype.getElement = function () {
 
 let newBook = new Book('naruto', 'kishimoto', true);
 library.appendChild(newBook.getElement());
-library.appendChild(newBook.getElement());
-library.appendChild(newBook.getElement());
-library.appendChild(newBook.getElement());
-library.appendChild(newBook.getElement());
-library.appendChild(newBook.getElement());
-library.appendChild(newBook.getElement());
-
-const test = document.querySelector('.book');
-test.children[2].children[0].children[0].addEventListener('click', function () {//long property chain calls img element
-    this.src = 'checkbox-check-svgrepo-com.svg';
-})
