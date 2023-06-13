@@ -4,6 +4,7 @@ function Book(title, author, hasBeenRead) {
     this.title = title;
     this.author = author;
     this.hasBeenRead = hasBeenRead;
+    this.DOMElement = this.getElement();
 }
 
 Book.prototype.getElement = function () {
@@ -28,7 +29,15 @@ Book.prototype.getElement = function () {
     } else {
         img.src = 'checkbox-unchecked-svgrepo-com.svg';
     }
-    //add checkbox event listener
+    img.addEventListener('click', () => {
+        if (this.hasBeenRead) {
+            img.src = 'checkbox-unchecked-svgrepo-com.svg';
+            this.hasBeenRead = false;
+        } else {
+            img.src = 'checkbox-check-svgrepo-com.svg';
+            this.hasBeenRead = true;
+        }
+    })
     readForm.appendChild(img);
     const label = document.createElement('span');
     label.classList.add('label');
@@ -46,8 +55,13 @@ Book.prototype.getElement = function () {
 }
 
 let newBook = new Book('naruto', 'kishimoto', true);
-console.log(library);
-library.appendChild(newBook.getElement())
+library.appendChild(newBook.getElement());
+library.appendChild(newBook.getElement());
+library.appendChild(newBook.getElement());
+library.appendChild(newBook.getElement());
+library.appendChild(newBook.getElement());
+library.appendChild(newBook.getElement());
+library.appendChild(newBook.getElement());
 
 const test = document.querySelector('.book');
 test.children[2].children[0].children[0].addEventListener('click', function () {//long property chain calls img element
