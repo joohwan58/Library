@@ -4,7 +4,6 @@ function Book(title, author, hasBeenRead) {
     this.title = title;
     this.author = author;
     this.hasBeenRead = hasBeenRead;
-    this.DOMElement = this.getElement();
 }
 
 Book.prototype.getElement = function () {
@@ -47,7 +46,6 @@ Book.prototype.getElement = function () {
     button.classList.add('remove');
     button.type = 'button'
     button.textContent = 'Remove';
-    //add button event listener
     button.addEventListener('click', () => {
         library.removeChild(book);
     })
@@ -60,7 +58,7 @@ let formReadToggle = false;
 const formCheckbox = document.querySelector('form img');
 formCheckbox.addEventListener('click', () => {
     if (formReadToggle) {
-        formCheckbox.src = 'checkbox-unchecked-svgrepo-com.svg'
+        formCheckbox.src = 'checkbox-unchecked-svgrepo-com.svg';
         formReadToggle = false;
     } else {
         formCheckbox.src = 'checkbox-check-svgrepo-com.svg';
@@ -68,5 +66,26 @@ formCheckbox.addEventListener('click', () => {
     }
 });
 
-let newBook = new Book('naruto', 'kishimoto', true);
-library.appendChild(newBook.getElement());
+const form = document.querySelector('form');
+const titleForm = document.querySelector('#title');
+const authorForm = document.querySelector('#author');
+
+const submitButton = document.querySelector('.button.submit');
+let submitForm = function (event) {
+    let valid = form.checkValidity();
+    form.reportValidity();
+    console.log(valid);
+    if (valid) {
+        let title = titleForm.value;
+        let author = authorForm.value;
+        let newBook = new Book(title, author, formReadToggle);
+        library.appendChild(newBook.getElement());
+        form.reset();
+        formCheckbox.src = 'checkbox-unchecked-svgrepo-com.svg';
+    }
+    event.preventDefault();
+}
+submitButton.addEventListener('click', submitForm, false);
+
+let test = new Book('why', 'not working', false);
+console.log(test);
