@@ -74,7 +74,6 @@ const submitButton = document.querySelector('.button.submit');
 let submitForm = function (event) {
     let valid = form.checkValidity();
     form.reportValidity();
-    console.log(valid);
     if (valid) {
         let title = titleForm.value;
         let author = authorForm.value;
@@ -86,6 +85,3 @@ let submitForm = function (event) {
     event.preventDefault();
 }
 submitButton.addEventListener('click', submitForm, false);
-
-let test = new Book('why', 'not working', false);
-console.log(test);
