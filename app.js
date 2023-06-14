@@ -74,7 +74,10 @@ const hideElement = function (element) {
 
 const showElement = function (element) {
     library.appendChild(element);
+    element.style.visibility = 'visible';
+    element.style.position = 'static';
 }
+
 
 const titleForm = document.querySelector('#title');
 const authorForm = document.querySelector('#author');
@@ -107,3 +110,8 @@ addButton.addEventListener('click', () => {
     showElement(form);
     hideElement(addButton);
 })
+
+const resetButton = document.querySelector('.reset');
+resetButton.addEventListener('click', () => {
+    library.replaceChildren(addButton);
+});
