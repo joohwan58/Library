@@ -56,5 +56,17 @@ Book.prototype.getElement = function () {
     return book;
 }
 
+let formReadToggle = false;
+const formCheckbox = document.querySelector('form img');
+formCheckbox.addEventListener('click', () => {
+    if (formReadToggle) {
+        formCheckbox.src = 'checkbox-unchecked-svgrepo-com.svg'
+        formReadToggle = false;
+    } else {
+        formCheckbox.src = 'checkbox-check-svgrepo-com.svg';
+        formReadToggle = true;
+    }
+});
+
 let newBook = new Book('naruto', 'kishimoto', true);
 library.appendChild(newBook.getElement());
