@@ -79,15 +79,18 @@ const showElement = function (element) {
 }
 
 
+const addButton = document.querySelector('.add');
 const titleForm = document.querySelector('#title');
 const authorForm = document.querySelector('#author');
 const cancelButton = document.querySelector('.button.cancel');
-const addButton = document.querySelector('.add');
 const submitButton = document.querySelector('.button.submit');
-
+const resetButton = document.querySelector('.button.reset');
 cancelButton.addEventListener('click', () => {
     hideElement(form);
     showElement(addButton);
+});
+resetButton.addEventListener('click', () => {
+    formCheckbox.src = 'checkbox-unchecked-svgrepo-com.svg';
 });
 let submitForm = function (event) {
     let valid = form.checkValidity();
@@ -111,7 +114,7 @@ addButton.addEventListener('click', () => {
     hideElement(addButton);
 })
 
-const resetButton = document.querySelector('.reset');
-resetButton.addEventListener('click', () => {
+const bigResetButton = document.querySelector('.reset');
+bigResetButton.addEventListener('click', () => {
     library.replaceChildren(addButton);
 });
