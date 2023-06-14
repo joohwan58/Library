@@ -67,10 +67,25 @@ formCheckbox.addEventListener('click', () => {
 });
 
 const form = document.querySelector('form');
+
+const hideElement = function (element) {
+    library.removeChild(element);
+}
+
+const showElement = function (element) {
+    library.appendChild(element);
+}
+
 const titleForm = document.querySelector('#title');
 const authorForm = document.querySelector('#author');
-
+const cancelButton = document.querySelector('.button.cancel');
+const addButton = document.querySelector('.add');
 const submitButton = document.querySelector('.button.submit');
+
+cancelButton.addEventListener('click', () => {
+    hideElement(form);
+    showElement(addButton);
+});
 let submitForm = function (event) {
     let valid = form.checkValidity();
     form.reportValidity();
@@ -81,7 +96,14 @@ let submitForm = function (event) {
         library.appendChild(newBook.getElement());
         form.reset();
         formCheckbox.src = 'checkbox-unchecked-svgrepo-com.svg';
+        hideElement(form);
+        showElement(addButton);
     }
     event.preventDefault();
 }
 submitButton.addEventListener('click', submitForm, false);
+
+addButton.addEventListener('click', () => {
+    showElement(form);
+    hideElement(addButton);
+})

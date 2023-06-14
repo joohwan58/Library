@@ -53,9 +53,9 @@ body {
     background-color: white;
     border-radius: 10px;
     text-align: center;
-    height: 300px;
     display: flex;
     flex-direction: column;
+    height: 300px;
 
     .author {
         margin-bottom: auto;
@@ -98,6 +98,9 @@ body {
     background-color: rgba(0, 0, 0, 0);
     border: 0;
     cursor: pointer;
+    height: 300px;
+    width: 300px;
+    justify-self: center;
 
     .add-icon {
         fill: #555555;
@@ -114,6 +117,7 @@ form {
     padding: 25px;
     gap: 10px;
     font-size: 20px;
+    height: 300px;
 
     .read-form {
         margin-top: 10px;
